@@ -1,0 +1,11 @@
+{
+  "name": "UrlShortener",
+  "version": "1.0.0",
+  "description": "Shortens URL's and redirects users with HTTP 301 redirects",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
