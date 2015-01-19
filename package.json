@@ -1,11 +1,26 @@
 {
-  "name": "UrlShortener",
+  "name": "url-redirectr",
   "version": "1.0.0",
   "description": "Shortens URL's and redirects users with HTTP 301 redirects",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "= <=> (=)",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/runeli/UrlRedirectr.git"
+  },
+  "keywords": [
+    "shorten",
+    "url"
+  ],
+  "bugs": {
+    "url": "https://github.com/runeli/UrlRedirectr/issues"
+  },
+  "homepage": "https://github.com/runeli/UrlRedirectr",
+  "dependencies": {
+    "valid-url": "^1.0.9"
+  }
 }
