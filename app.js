@@ -3,7 +3,6 @@ var url = require('url');
 var UrlHelper = require('./js/UrlHelper.js')
 var qs = require('querystring');
 var DB = require('./js/DB.js');
-var validUrl = require('valid-url');
 var db = new DB();
 
 
