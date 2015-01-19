@@ -13,6 +13,10 @@ An URL redirector written in JavaScript
 **Returns:** a HTTP 301 Redirect to corresponding url for a given id
 **Example:** GET Requst to /1 points your browser to http://google.com/
 
+**GET /CV**
+**Returns:** A nice looking CV
+
+
 ## INSTALL
 
 ```
