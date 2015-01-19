@@ -1,5 +1,5 @@
 # UrlRedirectr
-An URL redirector written in JavaScript
+An URL redirector / shortener written in JavaScript
 
 ## API
 
