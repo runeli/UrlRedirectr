@@ -1,9 +1,10 @@
-var http = require('http');
-var url = require('url');
-var UrlHelper = require('./js/UrlHelper.js')
-var qs = require('querystring');
-var DB = require('./js/DB.js');
-var db = new DB();
+var
+    http = require('http'),
+    url = require('url'),
+    UrlHelper = require('./js/UrlHelper.js'),
+    qs = require('querystring'),
+    DB = require('./js/DB.js'),
+    db = new DB();
 
 
 var server = http.createServer(function (req, res) {

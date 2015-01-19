@@ -16,8 +16,6 @@ method.set = function (url) {
 
 method.get = function (key) {
 
-    console.log('trying to get:', key);
-    console.log(this.KeyValuePairStore);
     return this.KeyValuePairStore.filter(function (pair) {
         return pair.id === parseInt(key, 10);
     })[0];

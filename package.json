@@ -4,7 +4,7 @@
   "description": "Shortens URL's and redirects users with HTTP 301 redirects",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --reporter=\"spec\""
   },
   "author": "= <=> (=)",
   "license": "ISC",
@@ -22,5 +22,8 @@
   "homepage": "https://github.com/runeli/UrlRedirectr",
   "dependencies": {
     "valid-url": "^1.0.9"
+  },
+  "devDependencies": {
+    "mocha": "^2.1.0"
   }
 }
