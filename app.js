@@ -53,10 +53,6 @@ var server = http.createServer(function (req, res) {
 
 });
 
-//Argument: ´String´ containing an url or an ´Object´ containing a field for ´url´ {url:'http://reaktor.fi/'}
-
-
-
 
 server.listen(1337, '127.0.0.1');
 console.log('Server running at http://127.0.0.1:1337/');

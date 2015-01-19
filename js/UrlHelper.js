@@ -1,5 +1,6 @@
 var validUrl = require('valid-url');
 
+//Argument: ´String´ containing an url or an ´Object´ containing a field for ´url´ {url:'http://reaktor.fi/'}
 function UrlHelper(url) {
     if (typeof url === 'string') {
         this.url = url;
