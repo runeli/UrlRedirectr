@@ -2,17 +2,24 @@ var validUrl = require('valid-url');
 
 //Argument: ´String´ containing an url or an ´Object´ containing a field for ´url´ {url:'http://reaktor.fi/'}
 function UrlHelper(url) {
-    if (typeof url === 'string') {
+    
+    if (typeof url === 'string' && url.length > 0) {
         this.url = url;
-    } else if (typeof url !== 'undefined' && url.url !== 'undefined') {
+        this.prependHttp();
+
+    } else if (typeof url === 'object' && url.url !== 'undefined') {  
         this.url = url.url;
+        this.prependHttp();
+
     } else {
         this.url = undefined;
     }
+
 }
 
 UrlHelper.prototype.isValid = function () {
     //isUri returns a string if given argument is an URI, undefined otherwise
+    
     return typeof validUrl.isUri(this.url) === 'string';
 }
 

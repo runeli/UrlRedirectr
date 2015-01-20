@@ -28,11 +28,10 @@ var server = http.createServer(function (req, res) {
             var query = qs.parse(dataBody);
             var urlHelper = new UrlHelper(query.link);
 
-
             //Checks if posted `link` indeed has a valid URI 
-            if (urlHelper.prependHttp().isValid()) {
+            if (urlHelper.isValid()) {
 
-                res.writeHead(200, urlHelper.getHead('plain'));
+                res.writeHead(200, urlHelper.prependHttp().getHead('plain'));
 
                 //db.set() returns the given argument after pushing it to the database
                 return res.end(db.set(urlHelper.url).toString());
@@ -50,7 +49,7 @@ var server = http.createServer(function (req, res) {
     } else if (req.method === 'GET' && !isNaN(requestPath)) {
 
         var urlHelper = new UrlHelper(db.get(requestPath));
-        
+        console.log(urlHelper);
         //Found ID in the database
         if (urlHelper.isValid()) {
             

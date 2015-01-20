@@ -8,14 +8,18 @@ describe('UrlHelper tests', function () {
 
 
 
-    it('Should not be valid', function () {
+    it('Should be valid', function () {
         var u = new UrlHelper("asdfasdf");
+        assert(u.isValid());
+    });
+
+    it('Should not be valid', function () {
+        var u = new UrlHelper("");
         assert(!u.isValid());
     });
 
     it('Should be valid', function () {
         var u = new UrlHelper("reaktor.fi");
-        u.prependHttp();
         assert(u.isValid());
     });
 
@@ -39,10 +43,9 @@ describe('UrlHelper tests', function () {
         assert.deepEqual(u.getHead('plain'), { 'Content-Type': 'text/plain' });
     });
 
-    it('Should not prepend http://', function () {
+    it('Should prepend http://', function () {
         var u = new UrlHelper("reaktor.fi");
-        u.isValid();
-        assert.notEqual(u.url, 'http://reaktor.fi');
+        assert.equal(u.url, 'http://reaktor.fi');
     });
 
     
@@ -66,7 +69,7 @@ describe('DB tests', function () {
             var id = db.set('someUrl');
             var uh = new UrlHelper(db.get(id));
 
-            assert.equal(uh.url, 'someUrl');
+            assert.equal(uh.url, (new UrlHelper('someUrl')).url);
 
         });
 
