@@ -9,11 +9,11 @@ function UrlHelper(url) {
     } else {
         this.url = undefined;
     }
-
 }
 
 UrlHelper.prototype.isValid = function () {
-    return validUrl.isUri(this.prependHttp().url);
+    //isUri returns a string if given argument is an URI, undefined otherwise
+    return typeof validUrl.isUri(this.url) === 'string';
 }
 
 UrlHelper.prototype.getHead = function (type) {
@@ -26,9 +26,12 @@ UrlHelper.prototype.getHead = function (type) {
 }
 
 UrlHelper.prototype.prependHttp = function () {
-    if (this.url.substring(0, 7) !== 'http://' && this.url.substring(0, 8) !== 'https://') {
+
+    //Checks if this.url begins with 'http://' or 'https://'
+    if (!validUrl.isWebUri(this.url)) {
         this.url = 'http://' + this.url;
     }
+
     return this;
 }
 

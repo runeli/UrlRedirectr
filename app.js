@@ -9,34 +9,62 @@ var
 
 var server = http.createServer(function (req, res) {
     var requestPath = url.parse(req.url).pathname.substring(1);
-    
 
-    //POST /shorten
+
+    //ROUTE: POST /shorten
     if (req.method === 'POST' && requestPath === 'shorten') {
-        var query = qs.parse(url.parse(req.url).query);
-        var urlHelper = new UrlHelper(query.link);
 
-        res.writeHead(200, urlHelper.getHead('plain'));
-        
-        if (urlHelper.isValid()) {
+        var dataBody = '';
 
-            //db.set() returns the given argument after pushing it to the database
-            return res.end(db.set(urlHelper.prependHttp().url).toString());
-        }
+        //Get all posted data
+        req.on('data', function (part) {
+            dataBody += part;
+        });
 
-    //GET /{id}
+        //Process the request when all the data has been received
+        req.on('end', function () {
+
+            //Parse the received body
+            var query = qs.parse(dataBody);
+            var urlHelper = new UrlHelper(query.link);
+
+
+            //Checks if posted `link` indeed has a valid URI 
+            if (urlHelper.prependHttp().isValid()) {
+
+                res.writeHead(200, urlHelper.getHead('plain'));
+
+                //db.set() returns the given argument after pushing it to the database
+                return res.end(db.set(urlHelper.url).toString());
+
+            } else {
+
+                res.writeHead(404, urlHelper.getHead('plain'));
+                return res.end('`link` not a valid URI');
+
+            }
+        });
+
+
+    //ROUTE: GET /{id}
     } else if (req.method === 'GET' && !isNaN(requestPath)) {
 
         var urlHelper = new UrlHelper(db.get(requestPath));
         
+        //Found ID in the database
         if (urlHelper.isValid()) {
             
             res.writeHead(301, urlHelper.getHead());
             return res.end();
+        //ID does not exist in the database
+        } else {
+
+            res.writeHead(404, urlHelper.getHead('plain'));
+            return res.end('id not found');
 
         }
 
-    //show CV if requested
+    //ROUTE: GET /CV show CV if requested
     } else if (requestPath === 'CV') {
 
         var urlHelper = new UrlHelper('http://runeli.github.io/CV');
@@ -44,12 +72,16 @@ var server = http.createServer(function (req, res) {
         res.writeHead(301, urlHelper.getHead());
         return res.end();
 
-    }
+    //ROUTE: GET /
+    } else {
+    
 
-    //404 NOT FOUND
-    var urlHelper = new UrlHelper();
-    res.writeHead(404, urlHelper.getHead('plain'));
-    return res.end('id not found');
+        //Starting page
+        var urlHelper = new UrlHelper();
+        res.writeHead(200, urlHelper.getHead('plain'));
+        return res.end('For API, see: https://github.com/runeli/UrlRedirectr');
+
+    }
 
 });
 

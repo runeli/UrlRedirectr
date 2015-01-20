@@ -10,11 +10,12 @@ describe('UrlHelper tests', function () {
 
     it('Should not be valid', function () {
         var u = new UrlHelper("asdfasdf");
-        assert(u.isValid());
+        assert(!u.isValid());
     });
 
     it('Should be valid', function () {
         var u = new UrlHelper("reaktor.fi");
+        u.prependHttp();
         assert(u.isValid());
     });
 
@@ -38,10 +39,10 @@ describe('UrlHelper tests', function () {
         assert.deepEqual(u.getHead('plain'), { 'Content-Type': 'text/plain' });
     });
 
-    it('Should prepend http://', function () {
+    it('Should not prepend http://', function () {
         var u = new UrlHelper("reaktor.fi");
         u.isValid();
-        assert.equal(u.url, 'http://reaktor.fi');
+        assert.notEqual(u.url, 'http://reaktor.fi');
     });
 
     
@@ -51,24 +52,27 @@ describe('UrlHelper tests', function () {
 
 describe('DB tests', function () {
 
+    describe('DB tests 2', function () {
+        it('Should set and get values to the temporary DB', function () {
+            var db = new DB();
+            var id = db.set('someUrl');
 
+            assert.equal(db.get(id).url, 'someUrl');
 
-    it('Should set and get values to the temporary DB', function () {
-        var db = new DB();
-        var id = db.set('someUrl');
+        });
 
-        assert.equal(db.get(id).url, 'someUrl');
-        
+        it('should get an url from an db object', function () {
+            var db = new DB();
+            var id = db.set('someUrl');
+            var uh = new UrlHelper(db.get(id));
+
+            assert.equal(uh.url, 'someUrl');
+
+        });
+
     });
 
-    it('should get an url from an db object', function () {
-        var db = new DB();
-        var id = db.set('someUrl');
-        var uh = new UrlHelper(db.get(id));
-
-        assert.equal(uh.url, 'someUrl');
-
-    });
+    
 
 
 });
