@@ -17,13 +17,15 @@ function UrlHelper(url) {
 
 }
 
-UrlHelper.prototype.isValid = function () {
+var method = UrlHelper.prototype;
+
+method.isValid = function () {
     //isUri returns a string if given argument is an URI, undefined otherwise
     
     return typeof validUrl.isUri(this.url) === 'string';
 }
 
-UrlHelper.prototype.getHead = function (type) {
+method.getHead = function (type) {
 
     if (type === 'location' || typeof type === 'undefined') {
         return { 'Location': this.prependHttp().url };
@@ -32,7 +34,7 @@ UrlHelper.prototype.getHead = function (type) {
     }
 }
 
-UrlHelper.prototype.prependHttp = function () {
+method.prependHttp = function () {
 
     //Checks if this.url begins with 'http://' or 'https://'
     if (!validUrl.isWebUri(this.url)) {
