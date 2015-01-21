@@ -18,11 +18,17 @@ An URL redirector / shortener written in JavaScript
 
 
 ## INSTALL
-
+Download and install Node.js  
+http://nodejs.org/   
+On the command line, execute the following commands:
 ```
 git clone https://github.com/runeli/UrlRedirectr.git UrlRedirectr
 cd UrlRedirectr
 npm install
+```
+Point your browser to localhost http://127.0.0.1/  
+See API for available paths.
+
 node app.js
 ```
 
