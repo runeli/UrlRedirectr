@@ -10,7 +10,7 @@ An URL redirector / shortener written in JavaScript
 
 **GET /{id}**  
 **Parameter:** *{id}*, a link to shorten   
-**Returns:** a HTTP 301 Redirect to corresponding url for a given id
+**Returns:** a HTTP 301 Redirect to corresponding url for a given id  
 **Example:** GET Requst to /1 points your browser to http://google.com/
 
 **GET /CV**  
