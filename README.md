@@ -6,7 +6,9 @@ An URL redirector / shortener written in JavaScript
 **POST /shorten**  
 **Parameter:** *link*, a link to shorten   
 **Returns:** an id in text/plain format  
-**Example usage:** POST Requst to /shorten?link=http://google.com
+**Example usage:** POST Requst to /shorten?link=http://google.com  
+Note that if the URL is submitted without http:// it will be automatically appended, thus preventing unwanted behavior.
+
 
 **GET /{id}**  
 **Parameter:** *{id}*, a link to shorten   
@@ -14,7 +16,8 @@ An URL redirector / shortener written in JavaScript
 **Example:** GET Requst to /1 points your browser to http://google.com/
 
 **GET /CV**  
-**Returns:**  A nice looking CV
+**Returns:**  A nice looking CV  
+
 
 
 ## INSTALL
