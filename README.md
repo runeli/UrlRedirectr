@@ -27,5 +27,5 @@ cd UrlRedirectr
 npm install
 node app.js
 ```
-Point your browser to localhost http://127.0.0.1/  
+Point your browser to localhost http://127.0.0.1:1337/  
 See the API for available paths.
