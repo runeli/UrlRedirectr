@@ -25,10 +25,7 @@ On the command line, execute the following commands:
 git clone https://github.com/runeli/UrlRedirectr.git UrlRedirectr
 cd UrlRedirectr
 npm install
-```
-Point your browser to localhost http://127.0.0.1/  
-See API for available paths.
-
 node app.js
 ```
-
+Point your browser to localhost http://127.0.0.1/  
+See the API for available paths.
